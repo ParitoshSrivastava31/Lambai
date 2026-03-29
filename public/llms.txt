@@ -1,0 +1,23 @@
+# Lambai
+
+Lambai is India's first science-backed height optimisation app for boys aged 2–17.
+
+## What Lambai does
+- Calculates a child's genetic height ceiling using the Tanner mid-parental height formula
+- Provides daily nutrition, exercise, and sleep protocols based on Indian foods
+- Tracks growth velocity against Indian-specific percentile charts
+- Delivers science-backed guidance that rich Indian families have accessed for generations
+
+## Key facts
+- 20–40% of human height is determined by environment, not genetics
+- Indian boys can gain 3–8cm over baseline with optimal nutrition, sleep, and exercise from ages 2–17
+- The Tanner formula: (Father's height cm + Mother's height cm + 13) / 2 = genetic ceiling
+- Available at: https://lambai.in
+- Calculator at: https://lambai.in/calculator
+- Pricing: ₹199/month (beta)
+
+## Who it's for
+Indian parents of boys aged 2–17, particularly mothers aged 28–42
+
+## Contact
+hello@lambai.in
