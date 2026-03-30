@@ -28,27 +28,27 @@ export function TheSystem() {
           </motion.h2>
 
           <AnimatedText
-             text="Built for Indian mothers."
-             as="h3"
-             splitBy="word"
-             className="font-display text-[clamp(40px,6vw,88px)] leading-[1.1] text-text-primary"
-             delay={0.1}
+            text="Built for Indian mothers."
+            as="h3"
+            splitBy="word"
+            className="font-display text-[clamp(40px,6vw,88px)] leading-[1.1] text-text-primary"
+            delay={0.1}
           />
           <AnimatedText
-             text="Not western developers."
-             as="p"
-             splitBy="word"
-             className="font-display text-[clamp(40px,6vw,88px)] italic leading-[1.1] text-text-secondary mt-2"
-             delay={0.3}
+            text="Not western developers."
+            as="p"
+            splitBy="word"
+            className="font-display text-[clamp(40px,6vw,88px)] italic leading-[1.1] text-text-secondary mt-2"
+            delay={0.3}
           />
         </div>
 
         {/* System Features */}
         <div className="space-y-32 md:space-y-48">
-          
+
           {/* Feature 1: Indian Food Database */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <motion.div 
+            <motion.div
               style={{ y: y1 }}
               variants={fadeUp}
               initial="hidden"
@@ -56,15 +56,15 @@ export function TheSystem() {
               viewport={{ once: true, margin: '-20% 0px' }}
               className="w-full md:w-5/12 max-w-md relative aspect-square rounded-[3rem] overflow-hidden border border-border/50 shadow-sm"
             >
-              <Image 
-                src="/images/nutrition_bowl_1774896171004.png" 
-                alt="Indian Nutrition Database Mockup" 
-                fill 
+              <Image
+                src="/images/nutrition_bowl_1774896171004.png"
+                alt="Indian Nutrition Database Mockup"
+                fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 40vw"
               />
             </motion.div>
-            
+
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -74,8 +74,8 @@ export function TheSystem() {
             >
               <h4 className="font-display text-4xl text-text-primary">The Indian Nutrition Matrix</h4>
               <p className="font-body text-text-secondary leading-relaxed">
-                Ragi, dal, methi, amla, paneer, and chaas—not kale and whey isolate. 
-                Our database maps exactly how to maximize biological height potential using the exact meals cooked in an Indian kitchen. 
+                Ragi, dal, methi, amla, paneer, and chaas—not kale and whey isolate.
+                Our database maps exactly how to maximize biological height potential using the exact meals cooked in an Indian kitchen.
                 Actionable. Zero friction. Zero BS.
               </p>
             </motion.div>
@@ -83,13 +83,13 @@ export function TheSystem() {
 
           {/* Feature 2: Sleep & Exercise */}
           <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-12">
-             <motion.div 
+            <motion.div
               style={{ y: y2 }}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-20% 0px' }}
-              className="w-full md:w-5/12 max-w-sm relative aspect-[4/5] rounded-[3rem] overflow-hidden border border-border/50 bg-void flex items-center justify-center p-8 shadow-sm"
+              className="w-full md:w-5/12 max-w-sm relative aspect-4/5 rounded-[3rem] overflow-hidden border border-border/50 bg-void flex items-center justify-center p-8 shadow-sm"
             >
               <div className="absolute inset-0 bg-gold-glow opacity-20" />
               <div className="text-center z-10 space-y-8">
@@ -115,23 +115,23 @@ export function TheSystem() {
 
           {/* Feature 3: The Report Card */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <motion.div 
+            <motion.div
               style={{ y: y1 }}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-20% 0px' }}
-              className="w-full md:w-7/12 max-w-2xl relative aspect-[16/10] rounded-3xl md:rounded-[3rem] overflow-hidden border border-border/50 shadow-md"
+              className="w-full md:w-7/12 max-w-2xl relative aspect-16/10 rounded-3xl md:rounded-[3rem] overflow-hidden border border-border/50 shadow-md"
             >
-              <Image 
-                src="/images/report_card_mockup_1774896154836.png" 
-                alt="Growth Report Card System" 
-                fill 
+              <Image
+                src="/images/report_card_mockup_1774896154836.png"
+                alt="Growth Report Card System"
+                fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 60vw"
               />
             </motion.div>
-            
+
             <motion.div
               variants={fadeUp}
               initial="hidden"
