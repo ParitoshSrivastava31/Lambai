@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
@@ -29,9 +30,19 @@ export function Navbar() {
             <Link
               href="/"
               data-cursor-label="home"
-              className="font-display text-lg uppercase tracking-[0.15em] text-text-primary transition-opacity hover:opacity-70"
+              className="transition-opacity hover:opacity-70 flex items-center gap-3"
             >
-              Lambai
+              <Image 
+                src="/images/logo.png" 
+                alt="Lambai Logo" 
+                width={120} 
+                height={120} 
+                className="h-10 w-auto object-contain md:h-12"
+                priority 
+              />
+              <span className="font-display text-lg uppercase tracking-[0.15em] text-text-primary mt-1">
+                Lambai
+              </span>
             </Link>
           </div>
 

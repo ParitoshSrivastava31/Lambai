@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  /* Base — warm light canvas */
-  --color-void:     #FDFAF6;
-  --color-surface:  #F5F0EA;
-  --color-border:   #E8E0D6;
+  /* Base — neutral off-white */
+  --color-void:     #FAFAFA;
+  --color-surface:  #F5F5F5;
+  --color-border:   #E5E5E5;
 
   /* Accent — soft terracotta amber */
   --color-gold:     #C47D4E;
