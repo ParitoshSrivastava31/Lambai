@@ -76,10 +76,10 @@ export function WaitlistForm() {
               <button
                 type="submit"
                 disabled={status === 'loading' || !email}
-                className="absolute right-1 mr-1 h-10 rounded-full bg-gold px-6 font-body text-[11px] font-medium uppercase tracking-widest text-void transition-all hover:bg-gold-dim focus:outline-none disabled:opacity-50 cursor-pointer"
+                className="absolute right-1 mr-1 h-10 rounded-full bg-gold px-3 md:px-6 font-body text-[10px] md:text-[11px] font-medium uppercase tracking-widest text-void transition-all hover:bg-gold-dim focus:outline-none disabled:opacity-50 cursor-pointer whitespace-nowrap"
                 data-cursor-label="join"
               >
-                {status === 'loading' ? 'wait...' : 'Join Waitlist'}
+                {status === 'loading' ? 'wait...' : 'Join'}
               </button>
             </div>
 

@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="waitlist"
-      className="relative flex h-svh min-h-[600px] w-full flex-col items-center justify-center overflow-hidden px-5 sm:px-8"
+      className="relative flex min-h-svh w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-8"
       style={{
         background: 'radial-gradient(ellipse 60% 40% at 50% 110%, var(--color-gold-glow) 0%, transparent 70%), var(--color-void)'
       }}
@@ -20,10 +20,10 @@ export function Hero() {
           variants={maskReveal}
           initial="hidden"
           animate="visible"
-          className="mb-8 flex items-center overflow-hidden"
+          className="mb-6 md:mb-8 flex items-center overflow-hidden"
         >
-          <span className="mr-3 h-px w-8 bg-gold" />
-          <span className="font-body text-[11px] uppercase tracking-widest text-gold">
+          <span className="mr-3 h-px w-6 md:w-8 bg-gold" />
+          <span className="font-body text-[10px] md:text-[11px] uppercase tracking-widest text-gold">
             Rich Indian families figured this out decades ago.
           </span>
         </motion.div>
@@ -42,7 +42,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.55 }}
-          className="mb-12 max-w-xl font-body text-lg text-text-secondary sm:text-xl"
+          className="mb-8 md:mb-12 max-w-xl font-body text-base md:text-lg text-text-secondary sm:text-xl"
         >
           India's first science-backed height optimisation system for boys aged 2–17.
         </motion.p>
@@ -52,7 +52,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.7 }}
-          className="w-full max-w-md shrink-0"
+          className="w-full max-w-sm md:max-w-md shrink-0"
         >
           <WaitlistForm />
         </motion.div>

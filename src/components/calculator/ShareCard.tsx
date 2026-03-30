@@ -5,9 +5,10 @@ import html2canvas from 'html2canvas'
 
 interface ShareCardProps {
   heightText: string
+  gapText?: string
 }
 
-export function ShareCard({ heightText }: ShareCardProps) {
+export function ShareCard({ heightText, gapText }: ShareCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   const [isGenerating, setIsGenerating] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -25,7 +26,7 @@ export function ShareCard({ heightText }: ShareCardProps) {
       const image = canvas.toDataURL('image/png')
       const link = document.createElement('a')
       link.href = image
-      link.download = 'lambai-genetic-ceiling.png'
+      link.download = 'lambai-height-potential.png'
       link.click()
     } catch (err) {
       console.error('Error generating image', err)
@@ -49,19 +50,33 @@ export function ShareCard({ heightText }: ShareCardProps) {
       <div className="overflow-hidden rounded-xl border border-border shadow-lg">
         <div
           ref={cardRef}
-          className="flex h-[400px] w-[300px] flex-col items-center justify-center p-8 text-center"
+          className="flex h-[450px] w-[320px] flex-col items-center justify-center p-8 text-center"
           style={{ backgroundColor: '#FDFAF6' }}
         >
-          <span className="mb-12 font-display text-xl tracking-[0.2em]" style={{ color: '#B5AA9C' }}>
+          <span className="mb-8 font-display text-lg tracking-[0.2em]" style={{ color: '#B5AA9C' }}>
             LAMBAI
           </span>
-          <span className="mb-4 font-body text-sm uppercase tracking-widest" style={{ color: '#7A7062' }}>
-            His genetic ceiling
+
+          {gapText && (
+            <>
+              <span className="mb-2 font-body text-[10px] uppercase tracking-widest" style={{ color: '#C4614A' }}>
+                Inches left on the table
+              </span>
+              <span className="mb-8 font-display text-5xl" style={{ color: '#C4614A' }}>
+                {gapText}
+              </span>
+              <div className="mb-6 h-px w-16" style={{ backgroundColor: '#E8E0D6' }} />
+            </>
+          )}
+          
+          <span className="mb-2 font-body text-[10px] uppercase tracking-widest" style={{ color: '#7A7062' }}>
+            With Lambai protocol
           </span>
-          <span className="mb-12 font-display text-6xl" style={{ color: '#C47D4E' }}>
+          <span className="mb-8 font-display text-5xl" style={{ color: '#C47D4E' }}>
             {heightText}
           </span>
-          <span className="font-body text-xs" style={{ color: '#B5AA9C' }}>
+
+          <span className="mt-auto font-body text-[10px]" style={{ color: '#B5AA9C' }}>
             Calculate yours at lambai.in
           </span>
         </div>

@@ -51,7 +51,7 @@ export function MagneticButton({ children, className, ...props }: MagneticButton
         y: mounted ? ySpring : 0,
       }}
       className={cn(
-        "relative cursor-pointer rounded-full border border-gold px-8 py-4 font-body text-sm uppercase tracking-widest text-gold shadow-sm transition-all hover:bg-gold hover:text-void hover:shadow-lg",
+        "relative cursor-pointer rounded-full border border-gold px-6 md:px-8 py-3 md:py-4 font-body text-xs md:text-sm uppercase tracking-widest text-gold shadow-sm transition-all hover:bg-gold hover:text-void hover:shadow-lg",
         className
       )}
       {...props}

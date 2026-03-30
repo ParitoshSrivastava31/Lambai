@@ -8,13 +8,13 @@ import { maskReveal } from '@/lib/animations'
 
 export function StatementSection() {
   return (
-    <section className="mx-auto flex min-h-svh w-full max-w-7xl flex-col justify-between px-5 py-32 md:flex-row md:items-center md:px-8 lg:px-16 lg:py-48">
-      <div className="mb-16 flex w-full flex-col md:mb-0 md:w-3/5 md:pr-16">
-        <span className="mb-12 font-body text-[11px] uppercase tracking-widest text-gold">
+    <section className="mx-auto flex min-h-svh w-full max-w-7xl flex-col justify-between px-4 py-20 md:flex-row md:items-center md:px-8 lg:px-16 lg:py-48">
+      <div className="mb-12 flex w-full flex-col md:mb-0 md:w-3/5 md:pr-16">
+        <span className="mb-8 md:mb-12 font-body text-[11px] uppercase tracking-widest text-gold">
           The Problem
         </span>
 
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           <AnimatedText
             text={`Sachin Tendulkar stands at 5'4".`}
             as="p"

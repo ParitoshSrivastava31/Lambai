@@ -20,11 +20,11 @@ export function Navbar() {
         className={cn(
           "fixed top-0 z-100 w-full transition-all duration-300 ease-in-out",
           isScrolled
-            ? "border-b border-border bg-void/80 backdrop-blur-md py-4"
-            : "bg-transparent py-6"
+            ? "border-b border-border bg-void/80 backdrop-blur-md py-3 md:py-4"
+            : "bg-transparent py-4 md:py-6"
         )}
       >
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 md:px-8 lg:px-16">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 md:px-8 lg:px-16">
           <div className="flex items-center">
             <Link
               href="/"
