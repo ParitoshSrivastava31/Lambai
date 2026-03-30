@@ -60,14 +60,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${syne.variable} h-full antialiased`}>
+    <html lang="en" className={`${cormorant.variable} ${syne.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-body bg-void text-text-primary">
+      <body className="min-h-full flex flex-col font-body bg-void text-text-primary" suppressHydrationWarning>
         <LenisProvider>
           <GrainOverlay />
           <CustomCursor />
