@@ -26,11 +26,10 @@ function OptionCard({ label, description, selected, onClick }: OptionCardProps) 
     <button
       type="button"
       onClick={onClick}
-      className={`relative flex flex-col items-start rounded-xl border p-4 text-left transition-all duration-200 ${
-        selected
+      className={`relative flex flex-col items-start rounded-xl border p-4 text-left transition-all duration-200 ${selected
           ? 'border-gold bg-gold/10 shadow-md'
           : 'border-border bg-white/40 hover:border-gold/50 hover:bg-white/60'
-      }`}
+        }`}
     >
       <span className={`font-body text-sm font-medium ${selected ? 'text-text-primary' : 'text-text-secondary'}`}>
         {label}
@@ -92,7 +91,7 @@ const LIFESTYLE_OPTIONS = {
 export function CalculatorClient() {
   const [step, setStep] = useState<Step>('tier1')
   const [unit, setUnit] = useState<'ft' | 'cm'>('ft')
-  
+
   const [fatherFt, setFatherFt] = useState('5')
   const [fatherIn, setFatherIn] = useState('10')
   const [fatherCm, setFatherCm] = useState('178')
@@ -158,7 +157,7 @@ export function CalculatorClient() {
       <Navbar />
       <main className="flex w-full grow flex-col pt-20 pb-16 md:pt-24 md:pb-20">
         <div className="mx-auto w-full max-w-6xl px-4 md:px-8">
-          
+
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -180,13 +179,12 @@ export function CalculatorClient() {
               {['tier1', 'tier2', 'result'].map((s, i) => (
                 <React.Fragment key={s}>
                   <div
-                    className={`flex h-8 w-8 items-center justify-center rounded-full font-body text-xs font-medium transition-all ${
-                      step === s
+                    className={`flex h-8 w-8 items-center justify-center rounded-full font-body text-xs font-medium transition-all ${step === s
                         ? 'bg-gold text-void'
                         : ['tier1', 'tier2', 'result'].indexOf(step) > i
-                        ? 'bg-gold/20 text-gold'
-                        : 'border border-border bg-white/40 text-text-muted'
-                    }`}
+                          ? 'bg-gold/20 text-gold'
+                          : 'border border-border bg-white/40 text-text-muted'
+                      }`}
                   >
                     {['tier1', 'tier2', 'result'].indexOf(step) > i ? '✓' : i + 1}
                   </div>
@@ -223,22 +221,20 @@ export function CalculatorClient() {
                     <button
                       type="button"
                       onClick={() => setUnit('ft')}
-                      className={`rounded-full border px-3 py-1 font-body text-[11px] uppercase tracking-wider transition-all ${
-                        unit === 'ft'
+                      className={`rounded-full border px-3 py-1 font-body text-[11px] uppercase tracking-wider transition-all ${unit === 'ft'
                           ? 'border-gold bg-gold text-void shadow-sm'
                           : 'border-border text-text-muted hover:border-gold hover:text-gold'
-                      }`}
+                        }`}
                     >
                       ft / in
                     </button>
                     <button
                       type="button"
                       onClick={() => setUnit('cm')}
-                      className={`rounded-full border px-3 py-1 font-body text-[11px] uppercase tracking-wider transition-all ${
-                        unit === 'cm'
+                      className={`rounded-full border px-3 py-1 font-body text-[11px] uppercase tracking-wider transition-all ${unit === 'cm'
                           ? 'border-gold bg-gold text-void shadow-sm'
                           : 'border-border text-text-muted hover:border-gold hover:text-gold'
-                      }`}
+                        }`}
                     >
                       cm
                     </button>
@@ -605,7 +601,7 @@ export function CalculatorClient() {
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
-                    className="flex flex-col rounded-2xl border border-gold/30 bg-gradient-to-b from-gold/5 to-transparent p-4 md:p-6 text-center"
+                    className="flex flex-col rounded-2xl border border-gold/30 bg-linear-to-b from-gold/5 to-transparent p-4 md:p-6 text-center"
                   >
                     <span className="mb-2 font-body text-[10px] uppercase tracking-widest text-text-muted">
                       Genetic Ceiling
@@ -770,7 +766,7 @@ export function CalculatorClient() {
                   >
                     Start the Protocol — Free for 14 Days
                   </Link>
-                  
+
                   <button
                     type="button"
                     onClick={() => {
@@ -808,7 +804,7 @@ export function CalculatorClient() {
                       exit={{ opacity: 0, y: 10 }}
                       className="mt-6"
                     >
-                      <ShareCard 
+                      <ShareCard
                         heightText={`${result.optimisedPotential.feetInches} (with Lambai)`}
                         gapText={result.gap.feetInches}
                       />

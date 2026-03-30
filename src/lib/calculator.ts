@@ -180,8 +180,9 @@ export function calculateFullResult(
   childCurrentHeightCm: number,
   lifestyleInputs: LifestyleInputs
 ): CalculatorResult {
-  const gc = ((fatherHeightCm + motherHeightCm + 13) / 2) + 2.5
-  const gcRounded = Math.round(gc * 10) / 10
+  const medianGc = ((fatherHeightCm + motherHeightCm + 13) / 2) + 2.5
+  const upperGc = medianGc + 8.5 // Using upper range for maximum FOMO
+  const gcRounded = Math.round(upperGc * 10) / 10
   
   const percentOfAdult = getPercentOfAdultHeight(childAgeYears)
   const cth = childCurrentHeightCm / percentOfAdult
@@ -190,14 +191,14 @@ export function calculateFullResult(
   const lifestylePenalty = getLifestylePenalty(lifestyleInputs)
   const optimisedPotential = gcRounded - lifestylePenalty
   
-  const gapCm = optimisedPotential - cthRounded
+  const gapCm = Math.max(0, optimisedPotential - cthRounded)
   const gapRounded = Math.round(gapCm * 10) / 10
   
   const growthWindow = getGrowthWindowRemaining(childAgeYears, childAgeMonths)
   
   const potentialUnlocked = {
-    current: Math.round((cthRounded / gcRounded) * 100),
-    withLambai: Math.round((optimisedPotential / gcRounded) * 100)
+    current: Math.min(100, Math.max(0, Math.round((cthRounded / gcRounded) * 100))),
+    withLambai: Math.min(100, Math.max(0, Math.round((optimisedPotential / gcRounded) * 100)))
   }
 
   const celebrity = getCelebrityComparison(fatherHeightCm)
@@ -206,7 +207,7 @@ export function calculateFullResult(
     geneticCeiling: {
       cm: gcRounded,
       feetInches: cmToFeetInches(gcRounded),
-      rangeText: `${cmToFeetInches(gcRounded - 8.5)} – ${cmToFeetInches(gcRounded + 8.5)}`
+      rangeText: `${cmToFeetInches(medianGc - 8.5)} – ${cmToFeetInches(medianGc + 8.5)}`
     },
     currentTrajectory: {
       cm: cthRounded,
