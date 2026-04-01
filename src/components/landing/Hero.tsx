@@ -15,12 +15,22 @@ export function Hero() {
     >
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
+        {/* Desktop Background */}
         <Image
           src="/images/hero-section5.png"
           alt="Lambai Hero Background"
           fill
           priority
-          className="object-cover object-[center_top]"
+          className="hidden md:block object-cover object-[center_top]"
+          sizes="100vw"
+        />
+        {/* Mobile Background */}
+        <Image
+          src="/images/mobile4.jpg"
+          alt="Lambai Hero Background Mobile"
+          fill
+          priority
+          className="block md:hidden object-cover object-center"
           sizes="100vw"
         />
         {/* Subtle overlay for better text readability if the sky gets too bright */}
