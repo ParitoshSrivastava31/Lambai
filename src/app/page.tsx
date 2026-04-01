@@ -8,6 +8,7 @@ import { TheInsight } from '@/components/landing/TheInsight'
 import { TheEnemy } from '@/components/landing/TheEnemy'
 import { TheSystem } from '@/components/landing/TheSystem'
 import { TheMission } from '@/components/landing/TheMission'
+import { FeaturesBento } from '@/components/landing/FeaturesBento'
 
 export default function Home() {
   return (
@@ -22,6 +23,8 @@ export default function Home() {
         <TheEnemy />
         <TheSystem />
         <TheMission />
+        
+        <FeaturesBento />
 
         {/* Calculator CTA Bridge Section */}
         <section className="relative flex min-h-[60vh] w-full flex-col items-center justify-center bg-void px-4 py-24 sm:px-8 md:py-32">

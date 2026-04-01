@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-svh w-full flex-col items-center justify-center overflow-hidden"
+      className="relative flex min-h-[70svh] md:min-h-svh w-full flex-col items-center justify-center overflow-hidden"
     >
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
@@ -28,7 +28,7 @@ export function Hero() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex w-full max-w-5xl flex-col items-center justify-center px-6 text-center sm:px-8 -mt-12 md:-mt-20">
+      <div className="relative z-10 flex w-full max-w-5xl flex-col items-center justify-center px-6 text-center sm:px-8 -mt-6 md:-mt-20">
         <motion.div
           variants={maskReveal}
           initial="hidden"
