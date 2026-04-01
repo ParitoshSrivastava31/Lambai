@@ -2,23 +2,23 @@
 
 :root {
   /* Base — neutral off-white */
-  --color-void:     #FAFAFA;
-  --color-surface:  #F5F5F5;
-  --color-border:   #E5E5E5;
+  --color-void: #FAFAFA;
+  --color-surface: #F5F5F5;
+  --color-border: #E5E5E5;
 
   /* Accent — soft terracotta amber */
-  --color-gold:     #C47D4E;
+  --color-gold: #C47D4E;
   --color-gold-dim: #A8886A;
-  --color-gold-glow:#C47D4E18;
+  --color-gold-glow: #C47D4E18;
 
-  /* Text — warm browns */
-  --color-text-primary:   #2C2418;
+  /* Text — warm browns & greens */
+  --color-text-primary: #064E3B;
   --color-text-secondary: #7A7062;
-  --color-text-muted:     #B5AA9C;
+  --color-text-muted: #B5AA9C;
 
   /* Semantic */
   --color-success: #5A9E6F;
-  --color-error:   #C4614A;
+  --color-error: #C4614A;
 }
 
 @theme inline {
@@ -37,19 +37,19 @@
 body {
   background-color: var(--color-void);
   color: var(--color-text-primary);
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .font-display {
-  font-family: var(--font-cormorant), serif;
+  font-family: var(--font-outfit), sans-serif;
   font-feature-settings: 'liga' 1, 'kern' 1;
 }
 
 .font-body {
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-inter), sans-serif;
   font-feature-settings: 'kern' 1;
 }
 

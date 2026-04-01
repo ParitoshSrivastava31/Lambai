@@ -27,8 +27,8 @@ function OptionCard({ label, description, selected, onClick }: OptionCardProps) 
       type="button"
       onClick={onClick}
       className={`relative flex flex-col items-start rounded-xl border p-4 text-left transition-all duration-200 ${selected
-          ? 'border-gold bg-gold/10 shadow-md'
-          : 'border-border bg-white/40 hover:border-gold/50 hover:bg-white/60'
+        ? 'border-gold bg-gold/10 shadow-md'
+        : 'border-border bg-white/40 hover:border-gold/50 hover:bg-white/60'
         }`}
     >
       <span className={`font-body text-sm font-medium ${selected ? 'text-text-primary' : 'text-text-secondary'}`}>
@@ -166,7 +166,7 @@ export function CalculatorClient() {
           >
             <h1 className="mb-4 font-display text-[clamp(36px,5vw,56px)] leading-none text-text-primary">
               <span className="block">Discover his</span>
-              <span className="block italic text-gold">full growth potential</span>
+              <span className="block text-gold">full growth potential</span>
             </h1>
             <p className="mx-auto max-w-lg font-body text-base text-text-secondary">
               Most Indian boys never reach their genetic height. See how much your son is leaving on the table.
@@ -174,22 +174,22 @@ export function CalculatorClient() {
           </motion.div>
 
           {/* Progress indicator */}
-          <div className="mb-12 flex justify-center">
-            <div className="flex items-center gap-2">
+          <div className="mb-8 md:mb-12 flex justify-center">
+            <div className="flex items-center gap-1.5 md:gap-2">
               {['tier1', 'tier2', 'result'].map((s, i) => (
                 <React.Fragment key={s}>
                   <div
-                    className={`flex h-8 w-8 items-center justify-center rounded-full font-body text-xs font-medium transition-all ${step === s
-                        ? 'bg-gold text-void'
-                        : ['tier1', 'tier2', 'result'].indexOf(step) > i
-                          ? 'bg-gold/20 text-gold'
-                          : 'border border-border bg-white/40 text-text-muted'
+                    className={`flex h-7 w-7 md:h-8 md:w-8 items-center justify-center rounded-full font-body text-[10px] md:text-xs font-medium transition-all ${step === s
+                      ? 'bg-gold text-void'
+                      : ['tier1', 'tier2', 'result'].indexOf(step) > i
+                        ? 'bg-gold/20 text-gold'
+                        : 'border border-border bg-white/40 text-text-muted'
                       }`}
                   >
                     {['tier1', 'tier2', 'result'].indexOf(step) > i ? '✓' : i + 1}
                   </div>
                   {i < 2 && (
-                    <div className={`h-px w-8 ${['tier1', 'tier2', 'result'].indexOf(step) > i ? 'bg-gold' : 'bg-border'}`} />
+                    <div className={`h-px w-6 md:w-8 ${['tier1', 'tier2', 'result'].indexOf(step) > i ? 'bg-gold' : 'bg-border'}`} />
                   )}
                 </React.Fragment>
               ))}
@@ -222,8 +222,8 @@ export function CalculatorClient() {
                       type="button"
                       onClick={() => setUnit('ft')}
                       className={`rounded-full border px-3 py-1 font-body text-[11px] uppercase tracking-wider transition-all ${unit === 'ft'
-                          ? 'border-gold bg-gold text-void shadow-sm'
-                          : 'border-border text-text-muted hover:border-gold hover:text-gold'
+                        ? 'border-gold bg-gold text-void shadow-sm'
+                        : 'border-border text-text-muted hover:border-gold hover:text-gold'
                         }`}
                     >
                       ft / in
@@ -232,8 +232,8 @@ export function CalculatorClient() {
                       type="button"
                       onClick={() => setUnit('cm')}
                       className={`rounded-full border px-3 py-1 font-body text-[11px] uppercase tracking-wider transition-all ${unit === 'cm'
-                          ? 'border-gold bg-gold text-void shadow-sm'
-                          : 'border-border text-text-muted hover:border-gold hover:text-gold'
+                        ? 'border-gold bg-gold text-void shadow-sm'
+                        : 'border-border text-text-muted hover:border-gold hover:text-gold'
                         }`}
                     >
                       cm
@@ -595,13 +595,13 @@ export function CalculatorClient() {
                   <h2 className="font-display text-2xl text-text-primary">Here&apos;s What We Found</h2>
                 </div>
 
-                <div className="grid gap-4 md:grid-cols-3 md:gap-6">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
                   {/* Genetic Ceiling */}
                   <motion.div
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
-                    className="flex flex-col rounded-2xl border border-gold/30 bg-linear-to-b from-gold/5 to-transparent p-4 md:p-6 text-center"
+                    className="flex flex-col rounded-2xl border border-gold/30 bg-linear-to-b from-gold/5 to-transparent p-6 md:p-6 text-center"
                   >
                     <span className="mb-2 font-body text-[10px] uppercase tracking-widest text-text-muted">
                       Genetic Ceiling
@@ -677,7 +677,7 @@ export function CalculatorClient() {
                   initial="hidden"
                   animate="visible"
                   transition={{ delay: 0.3 }}
-                  className="mt-8 rounded-2xl border border-border bg-surface p-6 md:p-8"
+                  className="mt-6 md:mt-8 rounded-2xl border border-border bg-surface p-6 md:p-8"
                 >
                   <div className="flex flex-col items-center text-center md:flex-row md:items-start md:gap-6 md:text-left">
                     <div className="mb-4 shrink-0 md:mb-0">
@@ -732,7 +732,7 @@ export function CalculatorClient() {
                       <span className="text-gold font-semibold">{result.potentialUnlocked.withLambai}%</span> with Lambai
                     </span>
                   </div>
-                  <div className="relative h-4 w-full overflow-hidden rounded-full bg-border">
+                  <div className="relative h-3 md:h-4 w-full overflow-hidden rounded-full bg-border">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${result.potentialUnlocked.current}%` }}

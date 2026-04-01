@@ -81,7 +81,7 @@ export function TheInsight() {
            whileInView="visible"
            viewport={{ once: true, margin: '-10% 0px' }}
            custom={1}
-           className="relative flex flex-col rounded-2xl bg-void px-8 py-10 shadow-md border border-gold/40 z-10 -ml-4 md:-ml-12 mt-4 md:-mt-8"
+           className="relative flex flex-col rounded-2xl bg-void px-8 py-10 shadow-md border border-gold/40 z-10 md:-ml-12 mt-4 md:-mt-8"
         >
           <div className="absolute inset-0 bg-gold-glow opacity-30 pointer-events-none rounded-2xl" />
           <div className="mb-4 text-[11px] font-body uppercase tracking-widest text-gold text-right">

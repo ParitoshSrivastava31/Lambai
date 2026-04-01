@@ -38,7 +38,7 @@ export function TheSystem() {
             text="Not western developers."
             as="p"
             splitBy="word"
-            className="font-display text-[clamp(40px,6vw,88px)] italic leading-[1.1] text-text-secondary mt-2"
+            className="font-display text-[clamp(40px,6vw,88px)] leading-[1.1] text-text-secondary mt-2"
             delay={0.3}
           />
         </div>
@@ -89,14 +89,15 @@ export function TheSystem() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-20% 0px' }}
-              className="w-full md:w-5/12 max-w-sm relative aspect-4/5 rounded-[3rem] overflow-hidden border border-border/50 bg-void flex items-center justify-center p-8 shadow-sm"
+              className="w-full md:w-5/12 max-w-sm relative aspect-4/5 rounded-[3rem] overflow-hidden border border-border/50 shadow-sm"
             >
-              <div className="absolute inset-0 bg-gold-glow opacity-20" />
-              <div className="text-center z-10 space-y-8">
-                <div className="h-0.5 w-12 bg-gold mx-auto" />
-                <h5 className="font-display text-5xl text-text-primary italic">Deep Growth Protocol</h5>
-                <div className="h-0.5 w-12 bg-gold mx-auto" />
-              </div>
+              <Image
+                src="/images/feature.jpg"
+                alt="Micro-Load & HGH Cycles Protocol"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 40vw"
+              />
             </motion.div>
 
             <motion.div

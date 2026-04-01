@@ -30,7 +30,7 @@ export function TheMission() {
           text="In ten years, Lambai will be responsible for measurably increasing the average height of Indian boys by 2 to 4 centimetres per generation."
           as="h3"
           splitBy="word"
-          className="font-display text-[clamp(28px,4vw,64px)] italic leading-tight text-text-primary mb-12"
+          className="font-display text-[clamp(28px,4vw,64px)] leading-tight text-text-primary mb-12"
           delay={0.3}
         />
 

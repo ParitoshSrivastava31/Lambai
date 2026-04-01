@@ -33,7 +33,7 @@ export function TheEnemy() {
           text="Per 100 grams."
           as="h3"
           splitBy="word"
-          className="font-display text-[clamp(32px,4vw,56px)] italic leading-tight text-text-secondary mb-12"
+          className="font-display text-[clamp(32px,4vw,56px)] leading-tight text-text-secondary mb-12"
           delay={0.3}
         />
 
@@ -60,7 +60,7 @@ export function TheEnemy() {
           transition={{ delay: 0.3 }}
           className="mt-16 flex items-center gap-4 border border-border px-8 py-4 rounded-full bg-surface"
         >
-          <span className="font-display text-gold italic text-xl">Lambai</span>
+          <span className="font-display text-gold text-xl">Lambai</span>
           <span className="w-1.5 h-1.5 rounded-full bg-border" />
           <span className="font-body text-sm text-text-secondary uppercase tracking-wider">A Digital Optimization System. Not A Supplement.</span>
         </motion.div>

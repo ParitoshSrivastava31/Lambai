@@ -1,21 +1,21 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Syne } from 'next/font/google'
+import { Inter, Outfit } from 'next/font/google'
 import { GrainOverlay } from '@/components/ui/GrainOverlay'
 import { CustomCursor } from '@/components/ui/CustomCursor'
 import { LenisProvider } from '@/components/layout/LenisProvider'
 import './globals.css'
 
-const cormorant = Cormorant_Garamond({
+const outfit = Outfit({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-cormorant',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-outfit',
   display: 'swap',
 })
 
-const syne = Syne({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-syne',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -60,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${syne.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${outfit.variable} ${inter.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

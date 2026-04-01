@@ -16,7 +16,7 @@ export default function Home() {
       <main className="flex w-full flex-col">
         <Hero />
         <ScrollMarquee />
-        
+
         <TheProblem />
         <TheInsight />
         <TheEnemy />
@@ -38,7 +38,7 @@ export default function Home() {
             </span>
             <h2 className="mb-8 md:mb-12 font-display text-[clamp(36px,6vw,88px)] leading-[1.1] text-text-primary">
               What is your son&apos;s <br className="hidden sm:block" />
-              <span className="italic text-gold">genetic ceiling?</span>
+              <span className=" text-emerald-500">genetic ceiling?</span>
             </h2>
 
             <CalculatorCTA />

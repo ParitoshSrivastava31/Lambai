@@ -2,108 +2,112 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { WaitlistForm } from '@/components/landing/WaitlistForm'
 import { maskReveal, fadeUp } from '@/lib/animations'
 import Image from 'next/image'
+import Link from 'next/link'
+import { WaitlistForm } from '@/components/landing/WaitlistForm'
 
 export function Hero() {
   return (
     <section
-      id="waitlist"
-      className="relative flex min-h-svh w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-8 py-20"
-      style={{
-        background: 'radial-gradient(ellipse 60% 40% at 50% 110%, var(--color-gold-glow) 0%, transparent 70%), var(--color-void)'
-      }}
+      id="hero"
+      className="relative flex min-h-svh w-full flex-col items-center justify-center overflow-hidden"
     >
-      <div className="z-10 flex w-full max-w-7xl flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 mt-20 lg:mt-0">
+      {/* Background Image Layer */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero-section5.png"
+          alt="Lambai Hero Background"
+          fill
+          priority
+          className="object-cover object-[center_top]"
+          sizes="100vw"
+        />
+        {/* Subtle overlay for better text readability if the sky gets too bright */}
+        <div className="absolute inset-0 bg-black/10" />
+      </div>
 
-        {/* Left Content */}
-        <div className="flex w-full lg:w-1/2 flex-col items-center lg:items-start text-center lg:text-left">
-          <motion.div
-            variants={maskReveal}
-            initial="hidden"
-            animate="visible"
-            className="mb-6 md:mb-8 flex items-center overflow-hidden justify-center lg:justify-start"
-          >
-            <span className="mr-3 h-px w-6 md:w-8 bg-gold hidden lg:block" />
-            <span className="font-body text-[10px] md:text-[11px] uppercase tracking-widest text-gold text-center lg:text-left">
-              Rich Indian families figured this out decades ago.
-            </span>
-            <span className="ml-3 h-px w-6 md:w-8 bg-gold lg:hidden" />
-            <span className="mr-3 h-px w-6 md:w-8 bg-gold lg:hidden" />
+      {/* Main Content */}
+      <div className="relative z-10 flex w-full max-w-5xl flex-col items-center justify-center px-6 text-center sm:px-8 -mt-12 md:-mt-20">
+        <motion.div
+          variants={maskReveal}
+          initial="hidden"
+          animate="visible"
+          className="mb-6 flex items-center justify-center overflow-hidden"
+        >
+          <span className="font-body text-[11px] uppercase tracking-widest text-white/90 drop-shadow-sm">
+            India&apos;s First Science-Backed System
+          </span>
+        </motion.div>
+
+        <h1 className="mb-6 flex flex-col items-center justify-center font-display text-[clamp(40px,7vw,96px)] font-medium leading-[1.05] text-white drop-shadow-lg">
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}>
+            <span className="block">The Blueprint for</span>
           </motion.div>
-
-          <h1 className="mb-6 flex flex-col items-center lg:items-start justify-center font-display text-[clamp(48px,8vw,120px)] font-light leading-[0.9] text-text-primary">
-            <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}>
-              <span className="block">Every inch</span>
-            </motion.div>
-            <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.35 }}>
-              <span className="block italic text-gold">belongs to him.</span>
-            </motion.div>
-          </h1>
-
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.55 }}
-            className="mb-8 md:mb-12 max-w-xl font-body text-base md:text-lg text-text-secondary sm:text-xl lg:pr-12"
-          >
-            India's first science-backed height optimisation system for boys aged 2–17.
-          </motion.p>
-
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.7 }}
-            className="w-full max-w-sm shrink-0"
-          >
-            <WaitlistForm />
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.35 }}>
+            <span className="block">Maximum Height</span>
           </motion.div>
-        </div>
+        </h1>
 
-        {/* Right Phone Mockup */}
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.55 }}
+          className="mb-10 max-w-2xl font-body text-base md:text-xl text-white/90 drop-shadow-md sm:text-lg"
+        >
+          Unlock your son&apos;s genetic potential with India&apos;s most advanced growth optimization system. Safe, effective, and built for boys.
+        </motion.p>
+
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          transition={{ delay: 0.9, duration: 1.2, ease: "easeOut" }}
-          className="w-full lg:w-1/2 flex justify-center lg:justify-end perspective-[1000px]"
+          transition={{ delay: 0.7 }}
+          className="flex w-full max-w-2xl flex-col items-center justify-center gap-4 sm:flex-row sm:gap-4 mt-4"
         >
-          <div className="relative w-full max-w-[400px] aspect-9/16 transform rotate-y-[-10deg] rotate-x-[5deg] hover:rotate-y-0 transition-transform duration-700 ease-out">
-            <Image
-              src="/images/phone_mockup.png"
-              alt="Lambai App Mockup"
-              fill
-              priority
-              className="object-contain drop-shadow-2xl filter"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+          {/* <Link
+            href="/calculator"
+            className="flex w-full shrink-0 sm:w-auto h-14 items-center justify-center rounded-full bg-white px-8 font-body text-[14px] font-medium tracking-wide text-text-primary transition-all hover:bg-gray-100 hover:scale-105 active:scale-95 shadow-xl"
+          >
+            Try Calculator
+          </Link> */}
+
+          <div className="w-full flex justify-center mt-2">
+            <WaitlistForm variant="glass" />
           </div>
         </motion.div>
-
       </div>
 
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        animate="visible"
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 lg:bottom-12 flex flex-col items-center"
-      >
-        <div className="relative h-10 w-px overflow-hidden bg-gold/30">
-          <motion.div
-            animate={{ y: [0, 40] }}
-            transition={{
-              repeat: Infinity,
-              duration: 1.5,
-              ease: "linear"
-            }}
-            className="absolute top-0 h-1/2 w-full bg-gold"
+      {/* Smooth Rounded V-Shape Bottom Mask */}
+      {/* <div className="absolute -bottom-px left-0 z-20 w-full overflow-hidden text-void leading-none">
+        <svg
+          className="w-full text-void h-[6vh] sm:h-[8vh] md:h-[10vh]"
+          viewBox="0 0 1440 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0 Q720,60 1440,0 L1440,100 L0,100 Z"
+            fill="currentColor"
           />
-        </div>
-      </motion.div>
+        </svg>
+      </div> */}
+      <div className="absolute -bottom-px left-0 z-20 w-full overflow-hidden text-void leading-none">
+        <svg
+          className="w-full text-void h-[6vh] sm:h-[8vh] md:h-[10vh]"
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0 Q720,200 1440,0 L1440,100 L0,100 Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+
     </section>
   )
 }
+
