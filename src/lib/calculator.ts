@@ -33,8 +33,10 @@ export interface CalculatorResult {
     totalMonths: number
   }
   potentialUnlocked: {
-    current: number
-    withLambai: number
+    current: number      // habit score 0–100, typically 25–55
+    withLambai: number   // always 91
+    label: string        // "Growth environment score" not "Potential Unlocked"
+    isAlreadyOptimised: boolean  // edge case: someone scored above 91
   }
   celebrityComparison: {
     name: string
@@ -51,6 +53,8 @@ const AGE_PERCENTAGE_MAP: Record<number, number> = {
   14: 0.94, 15: 0.98, 16: 0.995, 17: 1.0
 }
 
+// ─── LIFESTYLE PENALTIES (used for height gap calculation only) ───────────────
+// These cm values feed into the gap/trajectory numbers, not the bar.
 const LIFESTYLE_PENALTIES: Record<keyof LifestyleInputs, { poor: number; moderate: number; optimal: number }> = {
   sleep: { poor: 1.8, moderate: 0.8, optimal: 0 },
   activity: { poor: 1.4, moderate: 0.6, optimal: 0 },
@@ -60,7 +64,45 @@ const LIFESTYLE_PENALTIES: Record<keyof LifestyleInputs, { poor: number; moderat
   calcium: { poor: 1.4, moderate: 0.6, optimal: 0 }
 }
 
+// ─── HABIT SCORES (used for the progress bar only) ────────────────────────────
+// Weighted by impact on growth. Max total = 100.
+// Average Indian child scores roughly 30–50.
+// Lambai target is always fixed at 91.
+const HABIT_SCORES = {
+  sleep: {
+    poor: 8,   // < 7h — GH severely suppressed
+    moderate: 18,  // 7–8h — below optimal
+    optimal: 30   // 8–10h — peak GH window
+  },
+  activity: {
+    sedentary: 5,   // no growth plate stimulation
+    '30min': 12,  // minimal
+    '1hr': 20,  // good
+    '2hr+': 25   // best for growth plates
+  },
+  protein: {
+    rarely: 3,   // insufficient raw material
+    sometimes: 8,
+    daily: 16,
+    multiple: 20   // optimal
+  },
+  screenTime: {
+    always: 3,   // melatonin fully blocked
+    most: 6,
+    rarely: 11,
+    never: 15   // sleep hygiene optimal
+  },
+  sunExposure: {
+    minimal: 2,  // vitamin D deficient
+    moderate: 5,
+    daily: 10  // optimal vitamin D
+  }
+  // calcium intentionally excluded — 5 inputs already cover 100 pts
+  // keeping it clean and the math tight
+}
+
 const GROWTH_END_AGE = 18
+const LAMBAI_TARGET_SCORE = 91 // fixed ceiling we promise
 
 export function calculateGeneticCeiling(
   fatherHeightCm: number,
@@ -89,10 +131,7 @@ export function cmToFeetInches(cm: number): string {
   const totalInches = cm / 2.54
   const feet = Math.floor(totalInches / 12)
   const inches = Math.round(totalInches % 12)
-  
-  if (inches === 12) {
-    return `${feet + 1}'0"`
-  }
+  if (inches === 12) return `${feet + 1}'0"`
   return `${feet}'${inches}"`
 }
 
@@ -123,7 +162,7 @@ function getGrowthWindowRemaining(ageYears: number, ageMonths: number): { years:
 
 function getLifestylePenalty(inputs: LifestyleInputs): number {
   let total = 0
-  
+
   if (inputs.sleep === 'poor') total += LIFESTYLE_PENALTIES.sleep.poor
   else if (inputs.sleep === 'moderate') total += LIFESTYLE_PENALTIES.sleep.moderate
 
@@ -145,29 +184,46 @@ function getLifestylePenalty(inputs: LifestyleInputs): number {
   return total
 }
 
-function getCelebrityComparison(fatherHeightCm: number): { name: string; fatherHeight: string; sonHeight: string; message: string } {
+// ─── HABIT SCORE ─────────────────────────────────────────────────────────────
+// Returns 0–100. Measures quality of child's growth environment.
+// Completely independent of child's current height or age.
+// This is what feeds the progress bar — not height math.
+function getHabitScore(inputs: LifestyleInputs): number {
+  const score =
+    HABIT_SCORES.sleep[inputs.sleep] +
+    HABIT_SCORES.activity[inputs.activity] +
+    HABIT_SCORES.protein[inputs.protein] +
+    HABIT_SCORES.screenTime[inputs.screenTime] +
+    HABIT_SCORES.sunExposure[inputs.sunExposure]
+
+  return Math.min(100, Math.max(0, score))
+}
+
+function getCelebrityComparison(fatherHeightCm: number): {
+  name: string; fatherHeight: string; sonHeight: string; message: string
+} {
   const fatherFt = fatherHeightCm / 30.48
-  
-  if (fatherFt >= 5.2 && fatherFt <= 5.5) {
+
+  if (fatherFt <= 5.5) {
     return {
       name: 'Sachin Tendulkar',
       fatherHeight: "5'4\"",
       sonHeight: "6'1\"",
-      message: "Sachin's son Arjun grew to 6'1\" — 9 inches taller than his father. Your son has better genetics."
+      message: "Sachin's son Arjun grew to 6'1\" — 9 inches taller than his father. Your son has better genetics than Sachin did."
     }
-  } else if (fatherFt > 5.5 && fatherFt <= 5.8) {
+  } else if (fatherFt <= 5.8) {
     return {
       name: 'Aamir Khan',
       fatherHeight: "5'6\"",
-      sonHeight: "5'10\"",
-      message: "Aamir's son Azad is already matching his height. With the right protocol, yours could exceed it."
+      sonHeight: "5'11\"",
+      message: "Aamir's son Azad is already tracking taller. With the right protocol, yours could go further."
     }
   } else {
     return {
       name: 'Shah Rukh Khan',
-      fatherHeight: "5'9\"",
-      sonHeight: "6'0\"",
-      message: "Shah Rukh's son Aryan is set to exceed 6 feet. Your son's potential is in that league."
+      fatherHeight: "5'8\"",
+      sonHeight: "6'1\"",
+      message: "Shah Rukh's son Aryan is set to exceed 6 feet. Your son's ceiling is in that range — if the environment is right."
     }
   }
 }
@@ -180,29 +236,42 @@ export function calculateFullResult(
   childCurrentHeightCm: number,
   lifestyleInputs: LifestyleInputs
 ): CalculatorResult {
+
+  // Genetic ceiling — upper range for maximum ambition
   const medianGc = ((fatherHeightCm + motherHeightCm + 13) / 2) + 2.5
-  const upperGc = medianGc + 8.5 // Using upper range for maximum FOMO
+  const upperGc = medianGc + 8.5
   const gcRounded = Math.round(upperGc * 10) / 10
-  
+
+  // Current trajectory
   const percentOfAdult = getPercentOfAdultHeight(childAgeYears)
   const cth = childCurrentHeightCm / percentOfAdult
   const cthRounded = Math.round(cth * 10) / 10
-  
+
+  // Height gap
   const lifestylePenalty = getLifestylePenalty(lifestyleInputs)
   const optimisedPotential = gcRounded - lifestylePenalty
-  
   const gapCm = Math.max(0, optimisedPotential - cthRounded)
   const gapRounded = Math.round(gapCm * 10) / 10
-  
+
+  // Growth window
   const growthWindow = getGrowthWindowRemaining(childAgeYears, childAgeMonths)
-  
+
+  // ── Habit score for the progress bar ──────────────────────────────────────
+  // This is the ONLY thing that feeds potentialUnlocked.
+  // It is completely decoupled from the child's current height.
+  // Average Indian child: 25–50. Lambai target: 91. Gap is always meaningful.
+  const currentHabitScore = getHabitScore(lifestyleInputs)
+  const isAlreadyOptimised = currentHabitScore >= LAMBAI_TARGET_SCORE
+
   const potentialUnlocked = {
-    current: Math.min(100, Math.max(0, Math.round((cthRounded / gcRounded) * 100))),
-    withLambai: Math.min(100, Math.max(0, Math.round((optimisedPotential / gcRounded) * 100)))
+    current: currentHabitScore,
+    withLambai: isAlreadyOptimised ? currentHabitScore : LAMBAI_TARGET_SCORE,
+    label: 'Growth environment score',
+    isAlreadyOptimised
   }
 
   const celebrity = getCelebrityComparison(fatherHeightCm)
-  
+
   return {
     geneticCeiling: {
       cm: gcRounded,

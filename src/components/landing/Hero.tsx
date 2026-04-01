@@ -22,7 +22,7 @@ export function Hero() {
           fill
           priority
           className="hidden md:block object-cover object-[center_top]"
-          sizes="100vw"
+          sizes="(min-width: 768px) 100vw, 1px"
         />
         {/* Mobile Background */}
         <Image
@@ -31,7 +31,7 @@ export function Hero() {
           fill
           priority
           className="block md:hidden object-cover object-center"
-          sizes="100vw"
+          sizes="(max-width: 767px) 100vw, 1px"
         />
         {/* Subtle overlay for better text readability if the sky gets too bright */}
         <div className="absolute inset-0 bg-black/10" />

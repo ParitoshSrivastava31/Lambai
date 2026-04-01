@@ -716,7 +716,7 @@ export function CalculatorClient() {
                 </motion.div>
 
                 {/* Progress Bar */}
-                <motion.div
+                {/* <motion.div
                   variants={fadeUp}
                   initial="hidden"
                   animate="visible"
@@ -725,8 +725,9 @@ export function CalculatorClient() {
                 >
                   <div className="mb-4 flex items-center justify-between">
                     <span className="font-body text-xs text-text-muted">
-                      Potential Unlocked
+                      {result.potentialUnlocked.label}
                     </span>
+
                     <span className="font-body text-xs text-text-secondary">
                       <span className="text-text-primary font-semibold">{result.potentialUnlocked.current}%</span> current →{' '}
                       <span className="text-gold font-semibold">{result.potentialUnlocked.withLambai}%</span> with Lambai
@@ -746,6 +747,77 @@ export function CalculatorClient() {
                       className="absolute left-0 top-0 h-full bg-gold"
                     />
                   </div>
+                  <p className="mt-3 font-body text-xs text-text-muted text-center">
+                    {result.potentialUnlocked.isAlreadyOptimised
+                      ? "Your son's environment is already well-optimised."
+                      : `His daily environment is capturing ${result.potentialUnlocked.current}% of his growth capacity. Lambai brings this to ${result.potentialUnlocked.withLambai}%.`
+                    }
+                  </p>
+                  <div className="mt-3 flex justify-between font-body text-[10px] text-text-muted">
+                    <span>Current</span>
+                    <span>With Lambai Protocol</span>
+                  </div>
+                </motion.div> */}
+
+                <motion.div
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate="visible"
+                  transition={{ delay: 0.5 }}
+                  className="mt-6 rounded-2xl border border-border bg-surface p-6"
+                >
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="font-body text-xs text-text-muted">
+                      {result.potentialUnlocked.label}
+                    </span>
+
+                    <span className="font-body text-xs text-text-secondary">
+                      <span className="text-text-primary font-semibold">
+                        {result.potentialUnlocked.current}%
+                      </span>{" "}
+                      current →{" "}
+                      <span className="text-gold font-semibold">
+                        {result.potentialUnlocked.withLambai}%
+                      </span>{" "}
+                      with Lambai
+                    </span>
+                  </div>
+
+                  <div className="relative h-3 md:h-4 w-full overflow-hidden rounded-full bg-border">
+                    {/* Current */}
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${result.potentialUnlocked.current}%` }}
+                      transition={{ duration: 1, delay: 0.6 }}
+                      className="absolute left-0 top-0 h-full bg-text-primary/40"
+                    />
+
+                    {/* Improvement (delta only) */}
+                    <motion.div
+                      initial={{ width: 0, left: `${result.potentialUnlocked.current}%` }}
+                      animate={{
+                        width: `${result.potentialUnlocked.withLambai -
+                          result.potentialUnlocked.current
+                          }%`,
+                        left: `${result.potentialUnlocked.current}%`,
+                      }}
+                      transition={{ duration: 1, delay: 0.8 }}
+                      className="absolute top-0 h-full bg-gold"
+                    />
+
+                    {/* Divider marker */}
+                    <div
+                      className="absolute top-0 h-full w-[2px] bg-white/40"
+                      style={{ left: `${result.potentialUnlocked.current}%` }}
+                    />
+                  </div>
+
+                  <p className="mt-3 font-body text-xs text-text-muted text-center">
+                    {result.potentialUnlocked.isAlreadyOptimised
+                      ? "Your son's environment is already well-optimised."
+                      : `His daily environment is capturing ${result.potentialUnlocked.current}% of his growth capacity. Lambai brings this to ${result.potentialUnlocked.withLambai}%.`}
+                  </p>
+
                   <div className="mt-3 flex justify-between font-body text-[10px] text-text-muted">
                     <span>Current</span>
                     <span>With Lambai Protocol</span>
